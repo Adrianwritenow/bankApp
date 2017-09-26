@@ -51,7 +51,7 @@ class Transaction extends Component {
   }
 function mapStateToProps(state) {
   const userIdx = state.users.findIndex(user => user._id === state.selectedUser);
-  const accountIdx = state.users[userIdx].accounts.findIndex(account => account.id === state.selectedAccount);
+  const accountIdx = state.users[userIdx].accounts.findIndex(account => account.id === state.selectedAccount.id);
   return {
     account: state.users[userIdx].accounts[accountIdx],
     user: state.users[userIdx]
