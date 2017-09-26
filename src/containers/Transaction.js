@@ -21,12 +21,14 @@ class Transaction extends Component {
       });
     }
 
-    handleWithdraw(e){
+    handleWithdraw = (e) =>{
       let amount = e.target.value;
-      if(amount){
-        this.props.withdrawFunds(amount);
-      }
+      console.log("click");
+      this.props.withdrawFunds(amount);
       this.toggle();
+      console.log("bang");
+
+
     }
 
     render() {
@@ -39,16 +41,16 @@ class Transaction extends Component {
               How Much do you want to Withdraw? Your Current balance is {this.props.account.balance}
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" value={5.00} onClick={this.toggle}>5.00</Button>{' '}
-              <Button color="secondary" value={10.00}onClick={this.toggle}>10.00</Button>
-              <Button color="secondary" value={20.00}onClick={this.toggle}>20.00</Button>
-
+              <Button  color="primary" value={5.00} onClick={this.toggle} onClick={this.handleWithdraw}>5.00</Button>{''}
+              <Button  color="secondary" value={10.00} onClick={this.toggle} onClick={this.handleWithdraw}>10.00</Button>{''}
+              <Button  color="secondary" value={20.00} onClick={this.toggle} onClick={this.handleWithdraw}>20.00</Button>{''}
             </ModalFooter>
           </Modal>
         </div>
       );
     }
   }
+
 function mapStateToProps(state) {
   const userIdx = state.users.findIndex(user => user._id === state.selectedUser);
   const accountIdx = state.users[userIdx].accounts.findIndex(account => account.id === state.selectedAccount.id);
